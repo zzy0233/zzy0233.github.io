@@ -10,7 +10,19 @@
 <script type="text/javascript" src="通行码/jquery.min.js"></script>
 <script>
     jQuery(function(){
-
+        
+        
+        
+        //##########################################
+        //#############改变生效条件#################
+        nu_min=6
+        nu_max=90
+        //############################################
+        //############################################
+        
+        
+        
+        
         nowtime = new Date();
         hour = nowtime.getHours();//时
         w=170
@@ -33,7 +45,7 @@
     function border() {
         var jz="已加强接种";
         var bor=document.getElementById('border');
-        if(1<9){
+        if(hour<nu_max && hour>nu_min) {
             bor.setAttribute("src","通行码/border.png");
             showTime();
             /*bor.style.top="-2px";
@@ -48,10 +60,13 @@
             yanse="#FFFFFF"
             h=1000
             w=1000
+
+            }
+
             
 
         }
-    }
+    
     //获取系统时间
     function showTime() {
         nowtime = new Date();
@@ -66,7 +81,7 @@
         //显示时间
         document.getElementById("div_date").innerText = p(month) + "月" + p(day) + "日 ";
         document.getElementById("div_timer").innerText = p(hour) + ":" + p(minutes) + ":" + p(seconds);
-        document.getElementById("div_timer_tt").innerText ="报告时间:2022-"+p(month)+ "-" + p(day) + " "+"02:26:55"
+        document.getElementById("div_timer_tt").innerText ="报告时间:2022-"+p(month)+ "-" + p(day) + " "+"04:25:57"
     }
 
     setInterval("showTime()", 1000);
@@ -101,6 +116,18 @@
                     <div id="output" style="width: 170px;margin: 0px auto;margin-bottom: 20px;margin-top: 5px;position: relative">
                         <img id="border">
                     </div>
+                    <p style="color: blue;font-size: 26px;">您今天可以返校学习
+                        
+            
+                        
+                        
+                    </p>
+                    <p style="color: white;font-size:3px">您今天可以返校学习
+                        
+            
+                        
+                        
+                    </p>
                     <p style="color: black;">新冠疫苗接种情况
                         
                             <span style="color: #10ad65;">已加强接种</span>
