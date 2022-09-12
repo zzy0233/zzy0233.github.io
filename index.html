@@ -1,53 +1,44 @@
 
-<html><head>
+
+
+
+
+
+  
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
     <meta charset="utf-8">
     <title>浙江财经大学健康通行码</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="通行码/main.css" />
+    <link rel="stylesheet" href="通行码/main.css"/>
 </head>
 
-<script src="通行码/min.js"></script>
-<script type="text/javascript" src="通行码/jquery.min.js"></script>
+<script src="通行码/jquery.min.js"></script>
+<script type="text/javascript" src="通行码/qrcode.min.js"></script>
 <script>
     jQuery(function(){
-        
-        
-        
-        //##########################################
-        //#############改变生效条件#################
-        nu_min=6
-        nu_max=90
-        //############################################
-        //############################################
-        
-        
-        
-        
-        nowtime = new Date();
-        hour = nowtime.getHours();//时
-        w=170
-        h=170
-        yanse="#1E90FF"
-        border();       
-        
+
         jQuery('#output').qrcode({
             render	: "table",
-            width: w,
-            height: h,
+            width: 170,
+            height: 170,
             text	: "98888888888099999999999999777777777799999999999999999999999991111111111",
             render: "canvas", //也可以替换为table
-            foreground: yanse,
+            foreground: "#1E90FF",
             background: "#FFF"
         });
+        border();
+        showTime();
     })
-
-
     function border() {
         var jz="已加强接种";
         var bor=document.getElementById('border');
-        if(hour<nu_max && hour>nu_min) {
-            bor.setAttribute("src","通行码/border.png");
-            showTime();
+        if("已接种"==jz){
+            bor.setAttribute("src","通行码/images/border.png");
             /*bor.style.top="-2px";
             bor.style.width="299px";
             bor.style.left="34px";
@@ -56,17 +47,9 @@
             pList[0].style.color="#676767";
             pList[1].style.color="#929191";*/
         }else {
-            bor.setAttribute("src","0");
-            yanse="#FFFFFF"
-            h=1000
-            w=1000
-
-            }
-
-            
-
+            bor.setAttribute("src","通行码/images/border.png");
         }
-    
+    }
     //获取系统时间
     function showTime() {
         nowtime = new Date();
@@ -81,7 +64,7 @@
         //显示时间
         document.getElementById("div_date").innerText = p(month) + "月" + p(day) + "日 ";
         document.getElementById("div_timer").innerText = p(hour) + ":" + p(minutes) + ":" + p(seconds);
-        document.getElementById("div_timer_tt").innerText ="报告时间:2022-"+p(month)+ "-" + p(day) + " "+"04:25:57"
+        document.getElementById("div_hsbg").innerText = p(month) + "-" + p(day) + " 04:28 ";
     }
 
     setInterval("showTime()", 1000);
@@ -93,100 +76,75 @@
 
 </script>
 
-<body style="background-color:rgb(81, 139, 221);">
+<body class="blue-bg">
 
-    <div class="content-box" style="z-index:2 ">
-        <div class="now-date" id="div_date";></div>
-        <div class="now-time" id="div_timer"></div>
-        <div class="sss">
-            <div class="link-btn" style="padding-top: 18px;">
-                <a  href="http://go.zzzzz0233.top/" class=""><img src="通行码/an1.png"></a>
-            </div>
-            <div class="top-title">
-                <div id="kongge">&nbsp;</div>
-                <p style="font-size:1.0rem;">姓名：夏安宏</p>
-                <p style="font-size:13px;">单位：会计学院（MPACC学院）</p>
-            </div>
-
+<div class="content-box">
+    <div class="now-date" id="div_date"></div>
+    <div class="now-time" id="div_timer"></div>
+    <div style="text-align:center;">
+        <img style="width: 90%;height: 3px;" src="通行码/images/分割条.png">
+    </div>
+    <div class="sss">
+        <div class="link-btn" style="padding-top: 5px;">
+            <a href="index.html" class=""><img style="width: 60px;" src="通行码/images/an3.png"></a>
         </div>
-        
-        
-            <div class="qr">
-                
-                    <div id="output" style="width: 170px;margin: 0px auto;margin-bottom: 20px;margin-top: 5px;position: relative">
-                        <img id="border">
-                    </div>
-                    <p style="color: blue;font-size: 26px;">您今天可以返校学习
-                        
-            
-                        
-                        
-                    </p>
-                    <p style="color: white;font-size:3px">您今天可以返校学习
-                        
-            
-                        
-                        
-                    </p>
-                    <p style="color: black;">新冠疫苗接种情况
-                        
-                            <span style="color: #10ad65;">已加强接种</span>
-                        
-                        
-                    </p>
-                    
-                
-                
-            </div>
-        
+        <div class="top-title">
+            <p style="font-size:1.0rem;font-weight: bold;">夏安宏</p>
+            <p style="font-size:13px;">会计学院（MPACC学院）</p>
+        </div>
 
-        
-        
-            <div style="width: 100%;text-align: center;padding: 0px 0px 5px 0px;position: relative;margin: auto;" >
-                <div style="width: 100%;margin: 0px auto;position: relative">
-                    <div style="color: black;width: 100%;padding-top: 10px;">
-                        核酸检测报告 <a style="color: #10ad65">阴性</a>
-                        <a id="div_timer_tt" style="color: gray;font-size: 14px">报告时间:2022-04-29 02:22:51</a>
-                    </div>
+    </div>
+    
+    
+        <div class="qr">
+            
+                <div id="output" style="width: 170px;margin: 0px auto;margin-bottom: 10px;margin-top: 5px;position: relative">
+                    <img id="border">
+                </div>
+                <p style="color: black;margin-bottom: 20px">疫苗接种情况&emsp;&emsp;
+                    
+                        <span style="font-size:1.0rem;color: #4bd47a;font-weight: bold;">已加强接种</span>
+                    
+                    
+                </p>
+                <div>
+                    
+                    
+                        <img style="width: 75%;" src="通行码/images/xstx.png">
+                    
+                </div>
+                
+            
+            
+        </div>
+    
+
+   
+    
+        <div style="width: 100%;text-align: center;padding: 0px 0px 5px 0px;position: relative;margin: auto;" >
+            <div style="width: 90%;margin: 0px auto;position: relative">
+                <div style="color: black;padding-top: 10px;">
+
+                    <img style="width: 100%;height: 35px" src="通行码/images/cdlhsbg.png"/>
+
+                    <div id="div_hsbg" style="position: absolute;margin-left: 55%;top: 34.5%;font-size: 16px;font-weight:bold;color: white">05-13 00:00</div>
                 </div>
             </div>
+        </div>
+    
+    
         
+    <div style="text-align:center;">
+        <img style="width: 90%;height: 3px;" src="通行码/images/分割条.png">
+    </div>
+    <div style="text-align:center;padding-top: 20px">
+        <a href="index.html" ><img style="width:90px;" src="通行码/images/txmsq.png"></a>&emsp;
+        <a href="index.html" ><img style="width:100px;" src="通行码/images/xsfxsq.png"></a>&emsp;
+        <a target="_blank" href="https://xc.caict.ac.cn/#/login"><img style="width:90px;" src="通行码/images/ckxcm.png"></a>
         
-            
-        <div style="text-align:center;padding-top: 20px">
-            <a href="http://go.zzzzz0233.top/" >通行码申请</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="http://go.zzzzz0233.top/" >学生返校申请</a>
-            
-        </div>
-        <div style="margin: auto;width: 100px">
-            <a target="_blank" href="http://go.zzzzz0233.top/">查看申请记录</a>
-        </div>
-        <div style="margin: auto;width: 134px">
-            <a target="_blank" href="https://xc.caict.ac.cn/#/login"> 通信大数据行程卡</a>
-        </div>
-    </div>
-    <div style="background-color: white; width:435px; height: 450px;
-    position: relative; top: -510px; left: -30px
-    z-index:1">
-    </div>
-
-    <div style="background-color: rgb(81, 139, 221); width:435px; height: 150px;
-    position: relative; top: -510px; left: -30px
-    z-index: 2">
-   <p style="margin: auto; width: 135px;">加强疫情防控</p>
-    <p style="font-size: 20px;font-weight: 550; letter-spacing:4px; color: aliceblue; 
-    padding-top: 40px;padding-left: 50px;">加强疫情防控     维护师生健康 </p>
     </div>
     
- <script language="javascript" type="text/javascript">
-     if(hour==30){
-        window.location.href='index_副本.html'
-     }
-     else {
-         a=1
-     }
- </script>
     
+</div>
 </body>
-
 </html>
